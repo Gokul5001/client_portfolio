@@ -1,0 +1,46 @@
+.about-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.chip {
+  display: inline-block;
+  font-size: 13.5px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  color: var(--accent-dark);
+}
+
+.card-soft {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.card-soft__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.contact-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.site-footer {
+  padding: 28px 0;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}

@@ -1,0 +1,39 @@
+.work-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--white);
+  height: 100%;
+}
+
+.work-card__thumb {
+  aspect-ratio: 4 / 5;
+  background-size: cover;
+  background-position: center;
+}
+
+.work-card__body {
+  padding: 16px 18px 20px;
+}
+
+.work-card__body h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.work-card__body p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.tone-warm { background: linear-gradient(160deg, #f7d9b8, #e9a56a); }
+.tone-indigo { background: linear-gradient(160deg, #3b3fa8, #1b1a5e); }
+.tone-amber { background: linear-gradient(160deg, #ffd66b, #f2a413); }
+.tone-violet { background: linear-gradient(160deg, #6b5bd6, #c07be0); }
+.tone-forest { background: linear-gradient(160deg, #4d5b43, #1f261c); }
+.tone-dark { background: linear-gradient(160deg, #2a2a2a, #0d0d0d); }
+.tone-teal { background: linear-gradient(160deg, #8fc4d6, #3a7f9b); }
+.tone-blue { background: linear-gradient(160deg, #3d7bd9, #0d2a6b); }

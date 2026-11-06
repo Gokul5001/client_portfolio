@@ -1,0 +1,64 @@
+.bilal-navbar {
+  background-color: transparent;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.bilal-navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--line);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.bilal-logo {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--ink) !important;
+}
+
+.bilal-navbar .nav-link {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--ink) !important;
+  opacity: 0.82;
+}
+
+.bilal-navbar .nav-link:hover {
+  opacity: 1;
+}
+
+.bilal-btn-cta {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white) !important;
+  background-color: var(--ink);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+}
+
+.bilal-btn-cta:hover {
+  background-color: var(--accent);
+  color: var(--white) !important;
+}
+
+.navbar-toggler {
+  border: none;
+  box-shadow: none !important;
+}
+
+@media (max-width: 991px) {
+  .bilal-navbar .navbar-collapse {
+    background: var(--white);
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+}
