@@ -1,39 +1,80 @@
+/* Uniform grid: every card has the same image frame, so rows line up */
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 576px) {
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .work-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1200px) {
+  .work-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
 .work-card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
   background: var(--white);
-  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+.work-card:hover {
+  color: inherit;
+  box-shadow: 0 12px 32px rgba(22, 24, 29, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Same-size frame for every project.
+   contain = whole design visible (bars on odd shapes).
+   Change to `cover` for a full-bleed look that crops wide banners. */
 .work-card__thumb {
-  aspect-ratio: 4 / 5;
-  background-size: cover;
-  background-position: center;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--paper);
 }
 
 .work-card__body {
-  padding: 16px 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px 18px;
+  border-top: 1px solid var(--line);
+  flex: 1;
 }
 
 .work-card__body h3 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 18px;
-  margin: 0 0 4px;
+  font-size: 17px;
+  margin: 0 0 3px;
 }
 
 .work-card__body p {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--ink-soft);
   margin: 0;
 }
 
-.tone-warm { background: linear-gradient(160deg, #f7d9b8, #e9a56a); }
-.tone-indigo { background: linear-gradient(160deg, #3b3fa8, #1b1a5e); }
-.tone-amber { background: linear-gradient(160deg, #ffd66b, #f2a413); }
-.tone-violet { background: linear-gradient(160deg, #6b5bd6, #c07be0); }
-.tone-forest { background: linear-gradient(160deg, #4d5b43, #1f261c); }
-.tone-dark { background: linear-gradient(160deg, #2a2a2a, #0d0d0d); }
-.tone-teal { background: linear-gradient(160deg, #8fc4d6, #3a7f9b); }
+.work-card__arrow {
+  font-size: 16px;
+  color: var(--ink-soft);
+  transition: color 0.3s ease;
+}
+
+.work-card:hover .work-card__arrow {
+  color: var(--accent);
+}
+
 .tone-blue { background: linear-gradient(160deg, #3d7bd9, #0d2a6b); }
