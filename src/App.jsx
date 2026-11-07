@@ -4,8 +4,9 @@ import './theme.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
-import Skills from './components/Skills'
+import Services from './components/Services'
 import Work from './components/Work'
+import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Education from './components/Education'
 import Contact from './components/Contact'
@@ -17,8 +18,9 @@ function App() {
       <Header />
       <Hero />
       <About />
-      <Skills />
+      <Services />
       <Work />
+      <Skills />
       <Experience />
       <Education />
       <Contact />

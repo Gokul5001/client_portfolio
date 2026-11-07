@@ -1,8 +1,52 @@
-/* Uniform grid: every card has the same image frame, so rows line up */
+/* Filters: plain text tabs with an underline */
+.work-filters {
+  display: flex;
+  gap: 0 32px;
+  margin-bottom: 44px;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.work-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.work-filters__btn {
+  flex: none;
+  padding: 14px 0;
+  margin-bottom: -1px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.work-filters__btn span {
+  margin-left: 7px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+.work-filters__btn:hover {
+  color: var(--ink);
+}
+
+.work-filters__btn.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+/* Grid: every tile has the same square stage so rows line up */
 .work-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 40px 28px;
 }
 
 @media (min-width: 576px) {
@@ -15,66 +59,80 @@
   .work-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-.work-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  overflow: hidden;
-  background: var(--white);
-  color: inherit;
-  text-decoration: none;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.work-card:hover {
-  color: inherit;
-  box-shadow: 0 12px 32px rgba(22, 24, 29, 0.1);
-  transform: translateY(-3px);
-}
-
-/* Same-size frame for every project.
-   contain = whole design visible (bars on odd shapes).
-   Change to `cover` for a full-bleed look that crops wide banners. */
-.work-card__thumb {
+.tile {
   display: block;
-  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* The stage is a fixed square; the image is centred inside it and can never
+   change its height, so every tile in a row stays the same size. */
+.tile__stage {
+  position: relative;
+  display: block;
   aspect-ratio: 1 / 1;
-  object-fit: contain;
-  background: var(--paper);
+  border-radius: 8px;
+  background: var(--stone);
+  transition: background-color 0.25s ease;
 }
 
-.work-card__body {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 18px 18px;
-  border-top: 1px solid var(--line);
-  flex: 1;
+.tile:hover .tile__stage {
+  background: #e9ebf1;
 }
 
-.work-card__body h3 {
+.tile__stage img {
+  position: absolute;
+  inset: 16px;
+  margin: auto;
+  display: block;
+  max-width: calc(100% - 32px);
+  max-height: calc(100% - 32px);
+  width: auto;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 6px 20px rgba(12, 18, 34, 0.16);
+}
+
+.tile__empty {
+  position: absolute;
+  inset: 16px;
+  margin: auto;
+  display: block;
+  height: calc(100% - 32px);
+  aspect-ratio: 4 / 5;
+  border-radius: 3px;
+}
+
+.tile__title {
+  display: block;
+  margin-top: 16px;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 17px;
-  margin: 0 0 3px;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  width: fit-content;
+  transition: background-size 0.25s ease;
 }
 
-.work-card__body p {
-  font-size: 12.5px;
+.tile:hover .tile__title {
+  background-size: 100% 1px;
+}
+
+.tile__client {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
   color: var(--ink-soft);
-  margin: 0;
-}
-
-.work-card__arrow {
-  font-size: 16px;
-  color: var(--ink-soft);
-  transition: color 0.3s ease;
-}
-
-.work-card:hover .work-card__arrow {
-  color: var(--accent);
 }
 
 .tone-blue { background: linear-gradient(160deg, #3d7bd9, #0d2a6b); }

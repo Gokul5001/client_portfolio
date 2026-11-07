@@ -1,13 +1,13 @@
 import './Experience.css'
 
 const jobs = [
-  { company: 'Oxford Academy', place: 'Jeddah, Saudi Arabia', period: 'Nov 2025 – Present' },
-  { company: 'Creative Solution', place: 'Jeddah, Saudi Arabia', period: 'Aug 2025 – Nov 2025' },
-  { company: 'Son of a Bee', place: 'Jeddah, Saudi Arabia', period: 'Jun 2025 – Jul 2025' },
-  { company: 'Blood Chain Pakistan', place: 'Islamabad, Pakistan', period: 'Jun 2023 – Present' },
-  { company: 'Saif Group Limited', place: 'Peshawar, Pakistan', period: 'Mar 2022 – Present' },
-  { company: 'Khan Builders & Real Estate', place: 'Islamabad, Pakistan', period: '2022 – 2024' },
-  { company: 'Markhor Group of Companies', place: 'Peshawar, Pakistan', period: 'Aug 2019 – Jun 2025' },
+  { company: 'Oxford Academy', role: 'Senior graphic designer', place: 'Jeddah, Saudi Arabia', period: 'Nov 2025 to present' },
+  { company: 'Creative Solution', role: 'Graphic designer', place: 'Jeddah, Saudi Arabia', period: 'Aug 2025 to Nov 2025' },
+  { company: 'Son of a Bee', role: 'Digital marketing and graphic designer', place: 'Jeddah, Saudi Arabia', period: 'Jun 2025 to Jul 2025' },
+  { company: 'Blood Chain Pakistan', role: 'Digital marketing and graphic designer', place: 'Islamabad, Pakistan', period: 'Jun 2023 to present' },
+  { company: 'Saif Group Limited', role: 'Digital marketing and graphic designer', place: 'Peshawar, Pakistan', period: 'Mar 2022 to present' },
+  { company: 'Khan Builders and Real Estate', role: 'Digital marketing and graphic designer', place: 'Islamabad, Pakistan', period: '2022 to 2024' },
+  { company: 'Markhor Group of Companies', role: 'Digital marketing and graphic designer', place: 'Peshawar, Pakistan', period: 'Aug 2019 to Jun 2025' },
 ]
 
 const awards = [
@@ -19,37 +19,43 @@ const awards = [
 
 function Experience() {
   return (
-    <section id="experience" className="section-pad section-alt">
+    <section id="experience" className="section section--stone">
       <div className="container">
-        <p className="eyebrow">Experience</p>
-        <h2 className="section-title">Where I've worked.</h2>
-
-        <div className="row g-5">
-          <div className="col-lg-6">
-            <ul className="timeline">
-              {jobs.map((j) => (
-                <li key={j.company}>
-                  <div className="timeline__period">{j.period}</div>
-                  <div className="timeline__company">{j.company}</div>
-                  <div className="timeline__meta">Digital Marketing &amp; Graphic Designer · {j.place}</div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="col-lg-6">
-            <h3 className="card-soft__title mb-3">Certificates of appreciation</h3>
-            <div className="d-flex flex-column gap-3">
-              {awards.map((a) => (
-                <div className="card-soft" key={a.org}>
-                  <div className="timeline__period">{a.date}</div>
-                  <div className="timeline__company">{a.org}</div>
-                  <p className="timeline__meta mb-0 mt-1">{a.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="section-head">
+          <h2 className="section-title">Where I've worked.</h2>
+          <p className="section-lead">
+            Roles in Saudi Arabia and Pakistan, across education, real estate, retail and
+            non-profit work.
+          </p>
         </div>
+
+        <ul className="rows">
+          {jobs.map((j) => (
+            <li className="rows__item" key={j.company}>
+              <span className="rows__lead rows__lead--small">{j.period}</span>
+              <div className="rows__main">
+                <strong>{j.company}</strong>
+                {j.role}
+              </div>
+              <span className="rows__side">{j.place}</span>
+            </li>
+          ))}
+        </ul>
+
+        <h3 className="experience__sub">Certificates of appreciation</h3>
+
+        <ul className="rows">
+          {awards.map((a) => (
+            <li className="rows__item" key={a.org}>
+              <span className="rows__lead rows__lead--small">{a.date}</span>
+              <div className="rows__main">
+                <strong>{a.org}</strong>
+                {a.text}
+              </div>
+              <span className="rows__side"></span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

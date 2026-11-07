@@ -1,44 +1,69 @@
 import './Hero.css'
-import portrait from '../assets/Professional Passport Portrait.png'
+import { portrait, workImages } from '../data/images'
+
+// Three of his posters, arranged like prints on a wall.
+const wall = [
+  { slug: 'saif-sky-rise', className: 'hero__poster--a', tone: 'tone-sand' },
+  { slug: 'golden-buzz', className: 'hero__poster--b', tone: 'tone-amber' },
+  { slug: 'aurora-ring', className: 'hero__poster--c', tone: 'tone-royal' },
+]
 
 function Hero() {
   return (
-    <section id="top" className="bilal-hero d-flex align-items-center">
+    <section id="top" className="hero">
       <div className="container">
-        <div className="row align-items-center g-5">
-          <div className="col-lg-7 order-2 order-lg-1">
-            <p className="eyebrow">Graphic Designer · Digital Marketer</p>
-            <h1 className="bilal-hero__title">Hi, I'm Muhammad Bilal </h1>
-            <p className="bilal-hero__subhead">
-              Senior graphic designer and digital marketing expert in
-              Jeddah, turning brand goals into strategic content, pixel-perfect layouts and
-              measurable digital impact.
+        <div className="row align-items-center gx-0 gx-lg-5 gy-5">
+          <div className="col-lg-6">
+            <div className="hero__who">
+              {portrait ? (
+                <img src={portrait} alt="Muhammad Bilal" />
+              ) : (
+                <span className="hero__avatar">MB</span>
+              )}
+              <div>
+                <strong>Muhammad Bilal</strong>
+                <span>Senior graphic designer, Jeddah</span>
+              </div>
+            </div>
+
+            <h1 className="hero__title">Graphic design that gives your brand a clear voice.</h1>
+
+            <p className="hero__lead">
+              I design social campaigns, packaging, print and presentations for brands in Saudi
+              Arabia and Pakistan, with bilingual layouts in English, Urdu and Arabic.
             </p>
-            <div className="d-flex flex-wrap gap-3">
-              <a href="#work" className="btn btn-pill-primary btn-lg">View my work</a>
-              <a href="#contact" className="btn btn-pill-outline btn-lg">Let's talk</a>
+
+            <div className="hero__actions">
+              <a href="#work" className="btn-x btn-x--white">See my work</a>
+              <a href="#contact" className="btn-x btn-x--line-light">Get in touch</a>
             </div>
-            <div className="bilal-stats d-flex flex-wrap gap-5 mt-5">
+
+            <dl className="hero__facts">
               <div>
-                <div className="bilal-stats__num">6+</div>
-                <div className="bilal-stats__label">Years of experience</div>
+                <dt>Based in</dt>
+                <dd>Jeddah, Saudi Arabia</dd>
               </div>
               <div>
-                <div className="bilal-stats__num">7</div>
-                <div className="bilal-stats__label">Brands &amp; organisations</div>
+                <dt>Experience</dt>
+                <dd>7+ years</dd>
               </div>
               <div>
-                <div className="bilal-stats__num">4</div>
-                <div className="bilal-stats__label">Certificates of appreciation</div>
+                <dt>Availability</dt>
+                <dd>Freelance and full-time</dd>
               </div>
-            </div>
+            </dl>
           </div>
 
-          <div className="col-lg-5 order-1 order-lg-2 text-center">
-            {/* Replace with portrait: <img src="/src/assets/muhammad.jpg" alt="Muhammad Bilal" /> */}
-            <div className="bilal-portrait">
-  <img src={portrait} alt="Muhammad Bilal" />
-</div>
+          <div className="col-lg-6">
+            <div className="hero__wall" aria-hidden="true">
+              {wall.map((p) =>
+                workImages[p.slug] ? (
+                  <img key={p.slug} className={`hero__poster ${p.className}`} src={workImages[p.slug]} alt="" />
+                ) : (
+                  <div key={p.slug} className={`hero__poster hero__poster--empty ${p.className} ${p.tone}`}></div>
+                )
+              )}
+            </div>
           </div>
         </div>
       </div>

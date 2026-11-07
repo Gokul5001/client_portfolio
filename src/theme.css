@@ -1,18 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500&display=swap');
 @import './components/shared.css';
 
 :root {
   --white: #ffffff;
-  --paper: #fafaf8;
-  --ink: #16181d;
-  --ink-soft: #5b606b;
-  --accent: #3b4cca;
-  --accent-dark: #2a389c;
-  --accent-tint: #eef0fc;
-  --line: #e7e7e3;
+  --stone: #f3f4f7;
+  --ink: #0c1222;
+  --ink-2: #18203a;
+  --ink-soft: #566078;
+  --ink-faint: #8b93a7;
+  --line: #e3e5ec;
+  --line-dark: rgba(255, 255, 255, 0.16);
+  --blue: #2b45f5;
+  --blue-deep: #1d33c9;
+  --saffron: #ffb224;
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Inter', -apple-system, sans-serif;
+  --font-arabic: 'Noto Naskh Arabic', serif;
 }
 
 html {
@@ -24,64 +28,31 @@ body {
   background-color: var(--white);
   color: var(--ink);
   font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 section {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 72px;
 }
 
-.section-pad {
-  padding: 96px 0;
+a {
+  color: inherit;
 }
 
-.section-alt {
-  background-color: var(--paper);
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
 }
 
-.eyebrow {
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
+.hero :focus-visible,
+.section--dark :focus-visible,
+.site-nav:not(.scrolled) :focus-visible {
+  outline-color: var(--saffron);
 }
 
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(30px, 4vw, 44px);
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 40px;
-}
-
-.btn-pill-primary {
-  background-color: var(--ink);
-  color: var(--white);
-  border: none;
-  border-radius: 999px;
-  padding: 12px 28px;
-  font-family: var(--font-body);
-  font-weight: 500;
-}
-
-.btn-pill-primary:hover {
-  background-color: var(--accent);
-  color: var(--white);
-}
-
-.btn-pill-outline {
-  background-color: transparent;
-  color: var(--ink);
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  padding: 12px 28px;
-  font-family: var(--font-body);
-  font-weight: 500;
-}
-
-.btn-pill-outline:hover {
-  background-color: var(--accent-tint);
-  color: var(--ink);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
