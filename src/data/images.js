@@ -24,3 +24,15 @@ const rootFiles = import.meta.glob('../assets/*.{jpg,jpeg,png,webp}', {
 export const portrait = Object.entries(rootFiles).find(([path]) =>
   /portrait|muhammad|bilal|profile/i.test(path)
 )?.[1]
+
+// Optional: scanned certificates. Save images as src/assets/certificates/<slug>.png
+// (slugs: creative-solution, markhor-group, blood-chain, saif-group).
+const certFiles = import.meta.glob('../assets/certificates/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+
+export const certificateImages = Object.fromEntries(
+  Object.entries(certFiles).map(([path, url]) => [fileName(path), url])
+)

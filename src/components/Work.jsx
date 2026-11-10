@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import './Work.css'
 import ProjectModal from './ProjectModal'
+import { ProjectsArt } from './Illustrations'
 import { projects, groups } from '../data/projects'
 import { workImages } from '../data/images'
 
@@ -31,22 +32,25 @@ function Work() {
   return (
     <section id="work" className="section">
       <div className="container">
-        <div className="section-head d-flex flex-wrap justify-content-between align-items-end gap-4">
+        <div className="section-head work-head">
           <div>
-            <h2 className="section-title">Selected work.</h2>
+            <h2 className="section-title">Selected projects.</h2>
             <p className="section-lead">
               {projects.length} projects across real estate, food, healthcare, retail and print.
               Select one to see the details.
             </p>
+            <a
+              href="https://www.behance.net/wwwmuhammabilal110"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-x btn-x--line-ink work-head__cta"
+            >
+              Full portfolio on Behance
+            </a>
           </div>
-          <a
-            href="https://www.behance.net/wwwmuhammabilal110"
-            target="_blank"
-            rel="noreferrer"
-            className="btn-x btn-x--line-ink"
-          >
-            Full portfolio on Behance
-          </a>
+          <div className="work-head__art">
+            <ProjectsArt />
+          </div>
         </div>
 
         <div className="work-filters" role="tablist" aria-label="Filter projects">

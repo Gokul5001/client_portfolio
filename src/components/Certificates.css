@@ -1,0 +1,60 @@
+/* Each certificate is a small framed sheet: white paper with a thin gold inner border */
+.certs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cert {
+  display: flex;
+  background: var(--white);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.cert__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  padding: 26px 24px 28px;
+  border: 1px solid var(--saffron);
+  border-radius: 2px;
+}
+
+.cert__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  margin-bottom: 14px;
+  background: var(--stone);
+  border-radius: 2px;
+}
+
+.cert__date {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.cert__org {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.cert__text {
+  margin: 4px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 575px) {
+  .certs {
+    grid-template-columns: 1fr;
+  }
+}

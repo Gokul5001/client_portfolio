@@ -1,3 +1,5 @@
+import { EducationArt } from './Illustrations'
+
 const items = [
   { title: 'Bachelor study in English art and literature', school: 'City University of Science and IT, Peshawar', period: 'Sep 2020 to Jul 2024' },
   { title: 'Diploma in digital marketing', school: 'National Skills University, Islamabad', period: 'Apr 2019 to Oct 2020' },
@@ -11,21 +13,30 @@ function Education() {
   return (
     <section id="education" className="section">
       <div className="container">
-        <div className="section-head">
-          <h2 className="section-title">Education and training.</h2>
-        </div>
+        <div className="split">
+          <div className="split__aside">
+            <h2 className="section-title">Education and training.</h2>
+            <p className="section-lead">
+              A degree in English art and literature, plus diplomas in digital marketing, IT and
+              video editing.
+            </p>
+            <div className="split__art">
+              <EducationArt />
+            </div>
+          </div>
 
-        <ul className="rows">
-          {items.map((e) => (
-            <li className="rows__item" key={e.title}>
-              <span className="rows__lead rows__lead--small">{e.period}</span>
-              <div className="rows__main">
-                <strong>{e.title}</strong>
-              </div>
-              <span className="rows__side">{e.school}</span>
-            </li>
-          ))}
-        </ul>
+          <ul className="rows">
+            {items.map((e) => (
+              <li className="rows__item" key={e.title}>
+                <span className="rows__lead rows__lead--small">{e.period}</span>
+                <div className="rows__main">
+                  <strong>{e.title}</strong>
+                  {e.school}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )

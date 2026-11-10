@@ -32,16 +32,14 @@ function Header() {
 
         <div className="collapse navbar-collapse" id="siteNav">
           <ul className="navbar-nav mx-auto gap-lg-3">
-            <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
-            <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
-            <li className="nav-item"><a className="nav-link" href="#work">Work</a></li>
-            <li className="nav-item"><a className="nav-link" href="#skills">Skills</a></li>
-            <li className="nav-item"><a className="nav-link" href="#experience">Experience</a></li>
             <li className="nav-item"><a className="nav-link" href="#education">Education</a></li>
+            <li className="nav-item"><a className="nav-link" href="#experience">Experience</a></li>
+            <li className="nav-item"><a className="nav-link" href="#work">Projects</a></li>
+            <li className="nav-item"><a className="nav-link" href="#certificates">Certificates</a></li>
           </ul>
 
           <a href="#contact" className="site-nav__cta d-none d-lg-inline-flex">
-            Hire me
+            Contact me
           </a>
         </div>
       </div>

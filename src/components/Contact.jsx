@@ -1,4 +1,5 @@
 import './Contact.css'
+import { ContactArt } from './Illustrations'
 
 function Contact() {
   return (
@@ -17,6 +18,9 @@ function Contact() {
           </div>
 
           <div className="col-lg-5">
+            <div className="contact__art">
+              <ContactArt />
+            </div>
             <dl className="contact__list">
               <div>
                 <dt>Phone</dt>

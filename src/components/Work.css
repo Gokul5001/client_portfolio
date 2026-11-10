@@ -136,3 +136,25 @@
 }
 
 .tone-blue { background: linear-gradient(160deg, #3d7bd9, #0d2a6b); }
+
+.work-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.work-head__cta {
+  margin-top: 28px;
+}
+
+.work-head__art {
+  flex: none;
+  width: 280px;
+}
+
+@media (max-width: 767px) {
+  .work-head__art {
+    display: none;
+  }
+}

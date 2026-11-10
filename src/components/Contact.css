@@ -65,3 +65,9 @@
   background: var(--ink);
   border-top: 1px solid var(--line-dark);
 }
+
+.contact__art {
+  width: 100%;
+  max-width: 260px;
+  margin-bottom: 20px;
+}
