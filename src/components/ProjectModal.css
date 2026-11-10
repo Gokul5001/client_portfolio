@@ -5,223 +5,148 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(8, 12, 24, 0.76);
+  background: rgba(3, 4, 4, 0.9);
   backdrop-filter: blur(6px);
-  animation: pm-fade 0.18s ease both;
+  animation: pm-fade 0.25s ease both;
 }
+
+@keyframes pm-fade { from { opacity: 0; } to { opacity: 1; } }
 
 .pm__dialog {
-  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  width: min(1120px, 100%);
-  max-height: min(760px, calc(100vh - 48px));
-  background: var(--white);
-  border-radius: 14px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.8fr);
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 48px);
+  background: #0e1110;
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
   overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
-  animation: pm-rise 0.24s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-@keyframes pm-fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes pm-rise {
-  from { opacity: 0; transform: translateY(16px) scale(0.985); }
-  to { opacity: 1; transform: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pm__overlay,
-  .pm__dialog {
-    animation: none;
-  }
-}
-
-/* Image side */
 .pm__stage {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 0;
-  padding: 36px;
-  background: var(--ink);
+  min-height: 320px;
+  padding: 24px;
+  background: #060707;
+  overflow: hidden;
 }
 
-.pm__stage > img {
+.pm__stage img {
   display: block;
   max-width: 100%;
-  max-height: calc(min(760px, 100vh - 48px) - 72px);
+  max-height: calc(100vh - 100px);
   width: auto;
   height: auto;
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  object-fit: contain;
 }
 
 .pm__empty {
   display: grid;
   place-items: center;
-  width: min(380px, 100%);
-  aspect-ratio: 4 / 5;
-  border-radius: 4px;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 15px;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  background: linear-gradient(160deg, #3d7bd9, #0d2a6b);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .pm__nav {
   position: absolute;
   top: 50%;
-  translate: 0 -50%;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line-dark);
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border: 1px solid var(--line);
   border-radius: 50%;
-  background: rgba(12, 18, 34, 0.6);
-  color: var(--white);
+  background: rgba(10, 12, 11, 0.75);
+  color: var(--gold);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-
-.pm__nav:hover {
-  background: var(--white);
-  color: var(--ink);
-}
-
+.pm__nav:hover { background: var(--gold); color: #17120a; }
 .pm__nav--prev { left: 14px; }
 .pm__nav--next { right: 14px; }
 
 .pm__count {
   position: absolute;
-  left: 20px;
-  bottom: 14px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  left: 16px;
+  bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--mute);
 }
 
-/* Text side */
 .pm__panel {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 44px 36px 36px;
+  padding: 44px 34px 34px;
   overflow-y: auto;
 }
 
 .pm__close {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 12px;
+  right: 12px;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--line);
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line-soft);
   border-radius: 50%;
-  background: var(--white);
-  color: var(--ink);
+  background: none;
+  color: var(--text);
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
-
-.pm__close:hover {
-  background: var(--stone);
-}
+.pm__close:hover { border-color: var(--gold); color: var(--gold); }
 
 .pm__group {
-  margin: 0 0 10px;
-  font-size: 14px;
+  font-size: 10.5px;
   font-weight: 500;
-  color: var(--blue);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
 }
 
 .pm__title {
+  margin-top: 8px;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 34px;
+  font-size: clamp(24px, 2.6vw, 34px);
   line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.pm__client {
-  margin: 0 0 24px;
-  font-size: 15px;
-  color: var(--ink-soft);
-}
-
-.pm__desc {
-  margin: 0 0 28px;
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--ink-soft);
-}
+.pm__client { margin-top: 6px; font-size: 14px; color: var(--mute); }
+.pm__desc { margin-top: 22px; font-size: 15px; line-height: 1.7; }
 
 .pm__sub {
-  margin: 0 0 8px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.pm__list {
-  list-style: none;
-  margin: 0 0 32px;
-  padding: 0;
-  border-top: 1px solid var(--line);
+  margin: 26px 0 10px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
 }
 
 .pm__list li {
-  padding: 10px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 15px;
-  color: var(--ink-soft);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14.5px;
 }
 
-.pm__cta {
-  align-self: flex-start;
-  margin-top: auto;
-}
+.pm__cta { margin-top: 30px; }
 
 @media (max-width: 860px) {
-  .pm__overlay {
-    padding: 0;
-    align-items: end;
-  }
-
-  .pm__dialog {
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(0, 42vh) minmax(0, 1fr);
-    width: 100%;
-    max-height: 94vh;
-    border-radius: 14px 14px 0 0;
-  }
-
-  .pm__stage {
-    padding: 20px;
-  }
-
-  .pm__stage > img {
-    max-height: calc(42vh - 40px);
-  }
-
-  .pm__panel {
-    padding: 28px 22px 28px;
-  }
-
-  .pm__title {
-    font-size: 28px;
-  }
-
-  .pm__close {
-    top: 12px;
-    right: 12px;
-  }
-
-  .pm__group,
-  .pm__title {
-    padding-right: 48px;
-  }
+  .pm__overlay { padding: 0; place-items: end center; }
+  .pm__dialog { grid-template-columns: 1fr; max-height: 100vh; overflow-y: auto; }
+  .pm__stage { min-height: 0; padding: 56px 16px 16px; }
+  .pm__stage img { max-height: 46vh; }
+  .pm__panel { padding: 24px 22px 30px; overflow: visible; }
+  .pm__close { position: fixed; top: 12px; right: 12px; background: rgba(10, 12, 11, 0.85); z-index: 3; }
 }

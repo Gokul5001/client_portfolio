@@ -1,32 +1,43 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { useEffect } from 'react'
 import './theme.css'
-import Header from './components/Header'
-import Hero from './components/Hero'
+import Poster from './components/Poster'
+import About from './components/About'
 import Education from './components/Education'
 import Experience from './components/Experience'
 import Work from './components/Work'
-import Certificates from './components/Certificates'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { Awards, Contact, Credits } from './components/Finale'
+import Scrubber from './components/Scrubber'
+import Cursor from './components/Cursor'
 
-// Page flow follows the client's brief:
-// 1 Picture + name with animated introduction, 2 Education, 3 Work experience,
-// 4 Projects, 5 Appreciation certificates, 6 Contact.
-// About.jsx, Services.jsx and Skills.jsx are still in /components if you want them back.
-function App() {
+// Page plays like a film: poster → about → education → experience → work → awards → contact → credits.
+export default function App() {
+  // Fade-in for every .rv block once it scrolls into view.
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
+      }),
+      { rootMargin: '0px 0px -8% 0px' }
+    )
+    document.querySelectorAll('.rv:not(.in)').forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+
   return (
     <>
-      <Header />
-      <Hero />
-      <Education />
-      <Experience />
-      <Work />
-      <Certificates />
-      <Contact />
-      <Footer />
+      <div className="stage-bg" aria-hidden="true"></div>
+      <main>
+        <Poster />
+        <About />
+        <Education />
+        <Experience />
+        <Work />
+        <Awards />
+        <Contact />
+        <Credits />
+      </main>
+      <Scrubber />
+      <Cursor />
     </>
   )
 }
-
-export default App

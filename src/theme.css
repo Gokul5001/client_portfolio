@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500&display=swap');
-@import './components/shared.css';
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Jost:wght@300;400;500&display=swap');
 
 :root {
-  --white: #ffffff;
-  --stone: #f3f4f7;
-  --ink: #0c1222;
-  --ink-2: #18203a;
-  --ink-soft: #566078;
-  --ink-faint: #8b93a7;
-  --line: #e3e5ec;
-  --line-dark: rgba(255, 255, 255, 0.16);
-  --blue: #2b45f5;
-  --blue-deep: #1d33c9;
-  --saffron: #ffb224;
+  --bg: #0a0c0b;
+  --bg-2: #111513;
+  --gold: #d9b46a;
+  --gold-2: #b8944f;
+  --cream: #ede6d3;
+  --paper-ink: #2a2620;
+  --text: #e8e3d6;
+  --mute: rgba(232, 227, 214, 0.58);
+  --line: rgba(217, 180, 106, 0.28);
+  --line-soft: rgba(255, 255, 255, 0.1);
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Inter', -apple-system, sans-serif;
-  --font-arabic: 'Noto Naskh Arabic', serif;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Jost', -apple-system, sans-serif;
+  --font-mono: 'Courier Prime', monospace;
+
+  --bar: 38px; /* height of the bottom timeline */
 }
 
 html {
@@ -25,34 +25,94 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--white);
-  color: var(--ink);
+  padding-bottom: var(--bar);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
+  font-weight: 300;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-section {
-  scroll-margin-top: 72px;
+/* Fixed backdrop: cool teal top-left, warm amber bottom-right */
+.stage-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(900px 640px at 92% 100%, rgba(130, 84, 28, 0.3), transparent 70%),
+    radial-gradient(900px 640px at 0% 0%, rgba(18, 64, 58, 0.3), transparent 70%),
+    var(--bg);
 }
 
-a {
-  color: inherit;
-}
+h1, h2, h3, h4, p, dl, dd, ul, figure { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 
-.hero :focus-visible,
-.section--dark :focus-visible,
-.site-nav:not(.scrolled) :focus-visible {
-  outline-color: var(--saffron);
+.wrap {
+  width: min(1240px, 100% - 12vw);
+  margin-inline: auto;
+}
+
+@media (max-width: 700px) {
+  .wrap { width: calc(100% - 40px); }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.sub {
+  max-width: 44ch;
+  font-size: 15px;
+  color: var(--mute);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: #17120a;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-gold:hover { background: transparent; color: var(--gold); }
+
+/* Reveal on scroll */
+.rv {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0s);
+}
+.rv.in {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
+  .rv { opacity: 1; transform: none; transition: none; }
 }

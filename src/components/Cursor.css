@@ -1,0 +1,5 @@
+.has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
+.cur { position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none; }
+.cur--dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--gold); }
+.cur--ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 1px solid var(--gold); transition: width .2s, height .2s, margin .2s, background .2s; }
+.cur--ring.is-hot { width: 58px; height: 58px; margin: -29px 0 0 -29px; background: rgba(217,180,106,.14); }

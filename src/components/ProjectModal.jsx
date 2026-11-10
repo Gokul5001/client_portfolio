@@ -38,7 +38,7 @@ function ProjectModal({ project, image, position, total, onClose, onPrev, onNext
           {image ? (
             <img src={image} alt={project.title} />
           ) : (
-            <div className={`pm__empty tone-${project.tone || 'blue'}`}>
+            <div className="pm__empty">
               <span>Image coming soon</span>
             </div>
           )}
@@ -49,7 +49,7 @@ function ProjectModal({ project, image, position, total, onClose, onPrev, onNext
           <button type="button" className="pm__nav pm__nav--next" onClick={onNext} aria-label="Next project">
             <Icon name="next" />
           </button>
-          <span className="pm__count">{position} of {total}</span>
+          <span className="pm__count">{position} / {total}</span>
         </div>
 
         <div className="pm__panel">
@@ -70,7 +70,7 @@ function ProjectModal({ project, image, position, total, onClose, onPrev, onNext
             ))}
           </ul>
 
-          <a className="btn-x btn-x--ink pm__cta" href={project.href} target="_blank" rel="noreferrer">
+          <a className="btn-gold pm__cta" href={project.href} target="_blank" rel="noreferrer">
             View on Behance
             <Icon name="external" size={16} />
           </a>

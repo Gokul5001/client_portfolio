@@ -1,0 +1,170 @@
+.edu {
+  padding: 120px 0 100px;
+}
+
+.edu__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.edu__title { min-height: 1.05em; }
+
+.edu__cap { flex: none; opacity: 0.9; }
+
+.edu__list {
+  position: relative;
+  display: grid;
+  gap: 40px;
+}
+
+/* the gold line the clapperboards hang from */
+.edu__list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px dashed var(--line);
+}
+
+.edu__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 250px;
+}
+
+.edu__dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 5px rgba(217, 180, 106, 0.15);
+}
+
+/* big outlined year opposite the board */
+.edu__year {
+  font-family: var(--font-display);
+  font-size: clamp(90px, 15vw, 210px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(232, 227, 214, 0.22);
+  text-align: right;
+  padding-right: 6%;
+  user-select: none;
+}
+
+.edu__item:nth-child(odd) .edu__year { grid-column: 1; grid-row: 1; }
+.edu__item:nth-child(odd) .board { grid-column: 2; grid-row: 1; margin-left: 8%; }
+
+.edu__item:nth-child(even) .edu__year { grid-column: 2; grid-row: 1; text-align: left; padding: 0 0 0 6%; }
+.edu__item:nth-child(even) .board { grid-column: 1; grid-row: 1; margin-right: 8%; }
+
+/* ---------- clapperboard ---------- */
+.board {
+  width: min(100%, 440px);
+  background: #0e100f;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+}
+
+.edu__item:nth-child(even) .board { justify-self: end; }
+
+.board__clap {
+  height: 28px;
+  background: repeating-linear-gradient(-55deg, #f1ecdf 0 22px, #0e100f 22px 44px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  transform-origin: 0 100%;
+  transform: rotate(-9deg) translateY(-2px);
+  transition: transform 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) 0.25s;
+}
+
+.board.is-in .board__clap { transform: none; }
+
+.board__body { padding: 14px 18px 16px; }
+
+.board__k {
+  margin-top: 10px;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.board__v {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.04em;
+}
+
+.board__nums {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 10px 0 2px;
+  border-block: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.board__nums div {
+  padding: 8px 0 8px 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+.board__nums div:first-child { border-left: 0; padding-left: 0; }
+
+.board__nums span {
+  display: block;
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.board__nums b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.board__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.board__loc { font-size: 13px; color: var(--text); }
+
+.board__period {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--gold);
+}
+
+@media (max-width: 800px) {
+  .edu { padding: 80px 0 60px; }
+  .edu__head { margin-bottom: 50px; }
+  .edu__list::before { left: 8px; }
+  .edu__dot { left: 8px; top: 24px; }
+  .edu__item { grid-template-columns: 1fr; min-height: 0; padding-left: 34px; }
+  .edu__year { display: none; }
+  .edu__item .board { grid-column: 1 !important; grid-row: 1 !important; margin: 0 !important; justify-self: start !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .board__clap { transform: none; transition: none; }
+}
+
+.edu__thread { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; z-index: 0; }
+.edu__item { z-index: 1; }
+@media (max-width: 700px) { .edu__thread { display: none; } }
