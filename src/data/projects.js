@@ -33,7 +33,7 @@ export const projects = [
     href: `${B}/255295525/Saif-Group-Of-Companies-Saif-Sky-Rise`,
   },
   {
-    slug: 'galaxy-enclave',
+    slug: 'galaxyenclave-2',
     title: 'Galaxy Enclave',
     client: 'Real estate campaign',
     group: 'Real estate',

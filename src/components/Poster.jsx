@@ -6,10 +6,20 @@ import { prefersReducedMotion } from '../hooks'
 const roles = ['Senior graphic designer', 'Digital marketing expert', 'Brand and social media creator']
 
 const credits = [
+  ['A Flim By', 'Muhammad Bilal'],
+  ['Staring', 'Muhammad Bilal'],
   ['Graphic design', 'Muhammad Bilal'],
-  ['Digital marketing', 'Muhammad Bilal'],
-  ['Bilingual layouts', 'Muhammad Bilal'],
-  ['Video editing', 'Muhammad Bilal'],
+  ['Edited By', 'Muhammad Bilal'],
+  ['Cinematography By', 'Muhammad Bilal'],
+  ['Written By', 'Muhammad Bilal'],
+  ['Marketing By', 'Muhammad Bilal'],
+  ['Filmed in', 'Sahiwal, Punjab, pakistan'],
+
+
+  // ['Flimed in', 'Muhammad Bilal'],
+  // ['Digital marketing', 'Muhammad Bilal'],
+  // ['Bilingual layouts', 'Muhammad Bilal'],
+  // ['Video editing', 'Muhammad Bilal'],
 ]
 
 function Poster() {
@@ -66,14 +76,6 @@ function Poster() {
           </p>
 
           <div className="poster__foot poster__in" style={{ '--d': '0.6s' }}>
-            <div className="poster__badge">
-              <span className="poster__badge-mark">F</span>
-              <p>
-                <b>Freelance</b>
-                Open for new projects in design, campaigns, copy and video.
-              </p>
-            </div>
-
             <dl className="poster__credits">
               {credits.map(([k, v]) => (
                 <div key={k}>
@@ -84,12 +86,10 @@ function Poster() {
             </dl>
           </div>
         </div>
-
         <figure className="poster__card poster__in" style={{ '--d': '0.3s' }}>
           <div className="poster__card-in">
             {portrait ? <img src={portrait} alt="Muhammad Bilal" /> : <span>MB</span>}
           </div>
-          <figcaption>Now showing</figcaption>
         </figure>
       </div>
     </section>

@@ -240,3 +240,15 @@
   .strip__run, .paper__caret { animation: none; }
   .strip__run { width: auto; flex-wrap: wrap; justify-content: center; padding: 0 20px; }
 }
+
+/* keep the tilt: .rv.in would otherwise reset the transform */
+.paper.rv.in { transform: rotate(-1.6deg); }
+.specs dd { font-variant-numeric: tabular-nums; }
+.specs__tag { margin-left: 10px; padding: 2px 9px; border: 1px solid var(--gold); border-radius: 999px; font-family: var(--font-body); font-style: normal; font-size: 10px; letter-spacing: .08em; vertical-align: middle; color: var(--gold); }
+
+/* At-a-glance numbers (replaces the old specifications list) */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-content: center; }
+.stat { padding: 30px 26px; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.stat__n { display: block; font-family: var(--font-display); font-weight: 500; font-size: clamp(40px, 5vw, 64px); line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
+.stat__l { display: block; margin-top: 12px; font-size: 14px; color: var(--mute); }
+@media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }

@@ -1,25 +1,40 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './About.css'
-import { useInView, useTyped } from '../hooks'
+import { prefersReducedMotion, useInView, useTyped } from '../hooks'
 
-const script = `A client needs a launch: the poster, the words, the campaign. That usually means four people and a long email chain.
+const script = `Hi, I'm Muhammad Bilal, a graphic designer and digital marketer based in Jeddah.
 
-At the desk, MUHAMMAD BILAL opens every file at once.
+For over 7 years I have handled the whole job for brands: the design, the video edits, the copywriting and the campaign.
 
-            MUHAMMAD
-   I'll take all four. One head
-   holds the idea, from the first
-   frame to the last post.
+So a client works with one person instead of four, and the idea stays consistent from the first draft to the final post.
 
-The client closes the extra tabs.`
+I work in English, Urdu and Arabic.`
 
-const specs = [
-  ['Years in the industry', '7+'],
-  ['Featured projects', '18'],
-  ['Languages', 'EN / UR / AR'],
-  ['Base', 'JEDDAH, KSA'],
-  ['Availability', 'OPEN FOR WORK'],
+// n = number that counts up when the panel scrolls into view
+const stats = [
+  { n: 7, suffix: '+', label: 'Years of experience' },
+  { n: 7, suffix: '', label: 'Companies worked with' },
+  { n: 18, suffix: '', label: 'Projects showcased' },
+  { n: 3, suffix: '', label: 'Languages: English, Urdu, Arabic' },
 ]
+
+function Count({ to, run, suffix = '' }) {
+  const [v, setV] = useState(0)
+  useEffect(() => {
+    if (!run) return undefined
+    if (prefersReducedMotion()) { setV(to); return undefined }
+    let raf, start
+    const tick = (t) => {
+      start = start ?? t
+      const k = Math.min(1, (t - start) / 1800)
+      setV(Math.round(to * (1 - Math.pow(1 - k, 3))))
+      if (k < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [run, to])
+  return <>{v}{suffix}</>
+}
 
 const stroke = { fill: 'none', stroke: '#d9b46a', strokeWidth: 3, strokeLinejoin: 'round', strokeLinecap: 'round' }
 
@@ -94,6 +109,8 @@ const skills = [
 function About() {
   const paper = useRef(null)
   const seen = useInView(paper)
+  const specsRef = useRef(null)
+  const specsSeen = useInView(specsRef)
   const typed = useTyped(script, seen, 22)
 
   return (
@@ -102,25 +119,21 @@ function About() {
         <div ref={paper} className="paper rv in">
           <i className="paper__hole paper__hole--a"></i>
           <i className="paper__hole paper__hole--b"></i>
-          <p className="paper__scene">1.</p>
-          <p className="paper__head">INT. A SMALL STUDIO, JEDDAH – NIGHT</p>
+                    <p className="paper__head">ABOUT ME</p>
           <pre className="paper__text" aria-label={script}>
             <span aria-hidden="true">{typed}</span>
             <span className="paper__caret" aria-hidden="true"></span>
           </pre>
-          <p className="paper__cut">CUT TO:</p>
+          <p className="paper__cut">Let's work together.</p>
         </div>
 
-        <div className="specs rv" style={{ '--d': '0.15s' }}>
-          <h2 className="specs__title">Technical specifications</h2>
-          <dl>
-            {specs.map(([k, v]) => (
-              <div key={k}>
-                <dt>{k}</dt>
-                <dd>{v}</dd>
-              </div>
-            ))}
-          </dl>
+        <div ref={specsRef} className="stats rv" style={{ '--d': '0.15s' }}>
+          {stats.map((r) => (
+            <div className="stat" key={r.label}>
+              <b className="stat__n"><Count to={r.n} run={specsSeen} suffix={r.suffix} /></b>
+              <span className="stat__l">{r.label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
