@@ -3,9 +3,9 @@ import './Hero.css'
 import { portrait } from '../data/images'
 
 const roles = [
-  'Senior graphic designer',
-  'Digital marketing expert',
-  'Brand and social media creator',
+  'Senior Graphic Designer',
+  'Digital Marketing Expert',
+  'Brand and Social Media Creator',
 ]
 
 // Types each role, holds it, deletes it, then moves to the next one.
@@ -100,7 +100,7 @@ function Hero() {
         <div className="row align-items-center gx-0 gx-lg-5 gy-5">
           <div className="col-lg-7">
             <h1 className="hero__name hero__in" style={{ '--d': '0s' }}>
-              Muhammad Bilal
+              Hello I'm Bilal
             </h1>
 
             <p className="hero__role hero__in" style={{ '--d': '0.15s' }}>
@@ -133,7 +133,7 @@ function Hero() {
               </div>
               <div>
                 <dt>Availability</dt>
-                <dd>Freelance and full-time</dd>
+                <dd>Freelance and Full-time</dd>
               </div>
             </dl>
           </div>
