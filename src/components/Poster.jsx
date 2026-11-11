@@ -5,23 +5,6 @@ import { prefersReducedMotion } from '../hooks'
 
 const roles = ['Senior graphic designer', 'Digital marketing expert', 'Brand and social media creator']
 
-const credits = [
-  ['A Flim By', 'Muhammad Bilal'],
-  ['Staring', 'Muhammad Bilal'],
-  ['Graphic design', 'Muhammad Bilal'],
-  ['Edited By', 'Muhammad Bilal'],
-  ['Cinematography By', 'Muhammad Bilal'],
-  ['Written By', 'Muhammad Bilal'],
-  ['Marketing By', 'Muhammad Bilal'],
-  ['Filmed in', 'Sahiwal, Punjab, pakistan'],
-
-
-  // ['Flimed in', 'Muhammad Bilal'],
-  // ['Digital marketing', 'Muhammad Bilal'],
-  // ['Bilingual layouts', 'Muhammad Bilal'],
-  // ['Video editing', 'Muhammad Bilal'],
-]
-
 function Poster() {
   const [i, setI] = useState(0)
   const flare = useRef(null)
@@ -71,19 +54,19 @@ function Poster() {
           </h1>
 
           <p className="poster__star poster__in" style={{ '--d': '0.35s' }}>
-            <span>starring as</span>
             <b key={i} className="poster__role">{roles[i]}</b>
           </p>
 
           <div className="poster__foot poster__in" style={{ '--d': '0.6s' }}>
-            <dl className="poster__credits">
-              {credits.map(([k, v]) => (
-                <div key={k}>
-                  <dt>{k}</dt>
-                  <dd>{v}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="poster__intro">
+              <p>
+                Hi, I'm Muhammad Bilal, a graphic designer and digital marketer based in Jeddah.
+              </p>
+              <p>
+                For over 7 years I have handled the whole job for brands: the design, the video
+                edits, the copywriting and the campaign.
+              </p>
+            </div>
           </div>
         </div>
         <figure className="poster__card poster__in" style={{ '--d': '0.3s' }}>

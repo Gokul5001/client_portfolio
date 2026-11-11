@@ -171,6 +171,23 @@
   color: var(--text);
 }
 
+.poster__intro {
+  max-width: 520px;
+  padding-left: 20px;
+  border-left: 1px solid var(--gold);
+}
+
+.poster__intro p {
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.poster__intro p + p {
+  margin-top: 12px;
+  color: var(--mute);
+}
+
 .poster__credits {
   display: grid;
   grid-template-columns: repeat(2, auto);

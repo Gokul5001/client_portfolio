@@ -2,13 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import './About.css'
 import { prefersReducedMotion, useInView, useTyped } from '../hooks'
 
-const script = `Hi, I'm Muhammad Bilal, a graphic designer and digital marketer based in Jeddah.
+const script = `Muhammad Bilal | Graphic Designer, Digital Marketing Specialist, AI Videoeditor/Filmmaker Content Writer | Jeddah, Saudi Arabia
 
-For over 7 years I have handled the whole job for brands: the design, the video edits, the copywriting and the campaign.
+With over 7 years of industry experience, I provide end-to-end creative and marketing solutions for brands — encompassing brand identity design, video editing, copywriting, and integrated campaign management.
 
-So a client works with one person instead of four, and the idea stays consistent from the first draft to the final post.
+My approach enables clients to partner with a single, dedicated professional rather than coordinating with multiple teams. This ensures strategic clarity, creative consistency, and premium quality — from initial concept to final delivery.
 
-I work in English, Urdu and Arabic.`
+Fluent in English, Urdu, and Arabic, I help brands communicate effectively with diverse audiences and build a strong, lasting presence in the Saudi market and beyond.
+
+Let's elevate your brand together.`
 
 // n = number that counts up when the panel scrolls into view
 const stats = [
