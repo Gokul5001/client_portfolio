@@ -3,7 +3,7 @@ import './Poster.css'
 import { portrait } from '../data/images'
 import { prefersReducedMotion } from '../hooks'
 
-const roles = ['Senior graphic designer', 'Digital marketing expert', 'Brand and social media creator']
+const roles = ['Senior Graphic Designer', 'Digital Marketing Specialist', 'AI Video Editor & Filmmaker', 'Course Content Writer']
 
 function Poster() {
   const [i, setI] = useState(0)
@@ -56,18 +56,6 @@ function Poster() {
           <p className="poster__star poster__in" style={{ '--d': '0.35s' }}>
             <b key={i} className="poster__role">{roles[i]}</b>
           </p>
-
-          <div className="poster__foot poster__in" style={{ '--d': '0.6s' }}>
-            <div className="poster__intro">
-              <p>
-                Hi, I'm Muhammad Bilal, a graphic designer and digital marketer based in Jeddah.
-              </p>
-              <p>
-                For over 7 years I have handled the whole job for brands: the design, the video
-                edits, the copywriting and the campaign.
-              </p>
-            </div>
-          </div>
         </div>
         <figure className="poster__card poster__in" style={{ '--d': '0.3s' }}>
           <div className="poster__card-in">

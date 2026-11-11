@@ -94,7 +94,7 @@
 .poster__name {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(46px, 8.4vw, 132px);
+  font-size: clamp(36px, 6vw, 96px);
   line-height: 1.02;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -169,23 +169,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text);
-}
-
-.poster__intro {
-  max-width: 520px;
-  padding-left: 20px;
-  border-left: 1px solid var(--gold);
-}
-
-.poster__intro p {
-  font-size: clamp(14px, 1.15vw, 17px);
-  line-height: 1.75;
-  color: var(--text);
-}
-
-.poster__intro p + p {
-  margin-top: 12px;
-  color: var(--mute);
 }
 
 .poster__credits {

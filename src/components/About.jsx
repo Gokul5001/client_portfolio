@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './About.css'
 import { prefersReducedMotion, useInView, useTyped } from '../hooks'
 
-const script = `Muhammad Bilal | Graphic Designer, Digital Marketing Specialist, AI Videoeditor/Filmmaker Content Writer | Jeddah, Saudi Arabia
+const script = `Hi, I am Muhammad Bilal | Graphic Designer, Digital Marketing Specialist, AI Videoeditor/Filmmaker Content Writer | Jeddah, Saudi Arabia
 
 With over 7 years of industry experience, I provide end-to-end creative and marketing solutions for brands — encompassing brand identity design, video editing, copywriting, and integrated campaign management.
 
@@ -126,7 +126,7 @@ function About() {
             <span aria-hidden="true">{typed}</span>
             <span className="paper__caret" aria-hidden="true"></span>
           </pre>
-          <p className="paper__cut">Let's work together.</p>
+          {/* <p className="paper__cut">Let's work together.</p> */}
         </div>
 
         <div ref={specsRef} className="stats rv" style={{ '--d': '0.15s' }}>
