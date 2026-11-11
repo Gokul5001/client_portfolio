@@ -135,8 +135,11 @@
   position: relative;
   max-width: 540px;
   margin-top: clamp(24px, 4vh, 44px);
-  font-size: clamp(13px, 1vw, 15px);
-  line-height: 1.75;
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   white-space: pre-line;
   color: var(--text);
 }

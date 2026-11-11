@@ -5,9 +5,7 @@ import { prefersReducedMotion, useTyped } from '../hooks'
 
 const roles = ['Senior Graphic Designer', 'Digital Marketing Specialist', 'AI Video Editor & Filmmaker', 'Course Content Writer']
 
-const intro = `Hi, I'm Muhammad Bilal, a graphic designer and digital marketer based in Jeddah.
-
-For over 7 years I have handled the whole job for brands: the design, the video edits, the copywriting and the campaign.`
+const intro = roles.join('\n')
 
 function Poster() {
   const [i, setI] = useState(0)

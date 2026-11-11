@@ -4,12 +4,19 @@ import { useInView, useScramble } from '../hooks'
 
 // roll = year the course started
 const items = [
-  { roll: 2020, title: 'Bachelor study in English art and literature', school: 'City University of Science and IT, Peshawar', period: 'Sep 2020 to Jul 2024' },
-  { roll: 2019, title: 'Diploma in digital marketing', school: 'National Skills University, Islamabad', period: 'Apr 2019 to Oct 2020' },
-  { roll: 2018, title: 'Diploma in information technology', school: 'National Skills University, Islamabad', period: 'Jun 2018 to Aug 2020' },
-  { roll: 2018, title: 'Diploma in office management', school: 'National Skills University, Islamabad', period: 'Apr 2018 to Oct 2018' },
-  { roll: 2018, title: 'Diploma in video editing', school: 'National Skills University, Islamabad', period: 'Apr 2018 to Oct 2018' },
-  { roll: 2017, title: 'Freelancing and graphic design course', school: 'University of Spoken English and CS, Peshawar', period: 'Jun 2017 to Dec 2017' },
+  { roll: 2020, title: 'Bachelor study in English literature', school: 'City University of Science and IT, Peshawar', period: 'Sep 2020 to Jul 2024' },
+  { roll: 2018, title: 'FSc (Faculty of Science)', school: 'Frontier College System, Peshawar', period: 'Apr 2018 to Jul 2020' },
+  {
+    roll: 2017,
+    title: 'Diploma and certifications',
+    list: [
+      { name: 'Diploma in digital marketing', school: 'National Skills University, Islamabad', period: 'Apr 2019 to Oct 2020' },
+      { name: 'Diploma in information technology', school: 'National Skills University, Islamabad', period: 'Jun 2018 to Aug 2020' },
+      { name: 'Diploma in office management', school: 'National Skills University, Islamabad', period: 'Apr 2018 to Oct 2018' },
+      { name: 'Diploma in video editing', school: 'National Skills University, Islamabad', period: 'Apr 2018 to Oct 2018' },
+      { name: 'Freelancing and graphic design course', school: 'University of Spoken English and CS, Peshawar', period: 'Jun 2017 to Dec 2017' },
+    ],
+  },
 ]
 
 function Board({ item, scene }) {
@@ -29,9 +36,23 @@ function Board({ item, scene }) {
         </div>
         <p className="board__k">Title</p>
         <p className="board__title">{item.title}</p>
-        <p className="board__k">Location</p>
-        <p className="board__loc">{item.school}</p>
-        <p className="board__period">{item.period}</p>
+        {item.list ? (
+          <ul className="board__list">
+            {item.list.map((c) => (
+              <li key={c.name}>
+                <b>{c.name}</b>
+                <span>{c.school}</span>
+                <em>{c.period}</em>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <>
+            <p className="board__k">Location</p>
+            <p className="board__loc">{item.school}</p>
+            <p className="board__period">{item.period}</p>
+          </>
+        )}
       </div>
     </div>
   )
