@@ -2,22 +2,57 @@ import { useEffect, useRef, useState } from 'react'
 import './About.css'
 import { prefersReducedMotion, useInView, useTyped } from '../hooks'
 
-const script = `Hi, I am Muhammad Bilal | Graphic Designer, Digital Marketing Specialist, AI Videoeditor/Filmmaker Content Writer | Jeddah, Saudi Arabia
+const script = `Hi, I'm Muhammad Bilal, a graphic designer and digital marketer based in Jeddah.
 
-With over 7 years of industry experience, I provide end-to-end creative and marketing solutions for brands — encompassing brand identity design, video editing, copywriting, and integrated campaign management.
+For over 7 years I have handled the whole job for brands: the design, the video edits, the copywriting and the campaign.
 
-My approach enables clients to partner with a single, dedicated professional rather than coordinating with multiple teams. This ensures strategic clarity, creative consistency, and premium quality — from initial concept to final delivery.
+So a client works with one person instead of four, and the idea stays consistent from the first draft to the final post.
 
-Fluent in English, Urdu, and Arabic, I help brands communicate effectively with diverse audiences and build a strong, lasting presence in the Saudi market and beyond.
+I work in English, Urdu and Arabic.`
 
-Let's elevate your brand together.`
+const statStroke = { fill: 'none', stroke: '#d9b46a', strokeWidth: 3, strokeLinejoin: 'round', strokeLinecap: 'round' }
 
 // n = number that counts up when the panel scrolls into view
 const stats = [
-  { n: 7, suffix: '+', label: 'Years of experience' },
-  { n: 7, suffix: '', label: 'Companies worked with' },
-  { n: 18, suffix: '', label: 'Projects showcased' },
-  { n: 3, suffix: '', label: 'Languages: English, Urdu, Arabic' },
+  {
+    n: 7, suffix: '+', label: 'Years of experience',
+    // film reel
+    icon: (
+      <svg viewBox="0 0 120 120" width="56" height="56" aria-hidden="true">
+        <circle cx="60" cy="60" r="44" {...statStroke} />
+        <circle cx="60" cy="60" r="8" fill="#d9b46a" />
+        <circle cx="60" cy="32" r="9" {...statStroke} />
+        <circle cx="60" cy="88" r="9" {...statStroke} />
+        <circle cx="32" cy="60" r="9" {...statStroke} />
+        <circle cx="88" cy="60" r="9" {...statStroke} />
+      </svg>
+    ),
+  },
+  {
+    n: 7, suffix: '', label: 'Companies worked with',
+    // buildings
+    icon: (
+      <svg viewBox="0 0 120 120" width="56" height="56" aria-hidden="true">
+        <rect x="14" y="30" width="46" height="76" rx="3" {...statStroke} />
+        <rect x="60" y="56" width="46" height="50" rx="3" {...statStroke} />
+        <path d="M26 46h8M40 46h8M26 62h8M40 62h8M26 78h8M40 78h8M72 72h8M86 72h8M72 88h8M86 88h8" {...statStroke} />
+        <path d="M8 106h104" {...statStroke} />
+      </svg>
+    ),
+  },
+  {
+    n: 18, suffix: '', label: 'Projects showcased',
+    // stacked frames
+    icon: (
+      <svg viewBox="0 0 120 120" width="56" height="56" aria-hidden="true">
+        <rect x="30" y="12" width="76" height="60" rx="4" {...statStroke} />
+        <rect x="14" y="30" width="76" height="60" rx="4" fill="#17120a" stroke="#d9b46a" strokeWidth="3" strokeLinejoin="round" />
+        <circle cx="34" cy="50" r="6" fill="#d9b46a" />
+        <path d="M18 86l22-22 16 14 12-10 16 16" {...statStroke} />
+        <path d="M14 106h76" {...statStroke} />
+      </svg>
+    ),
+  },
 ]
 
 function Count({ to, run, suffix = '' }) {
@@ -126,12 +161,13 @@ function About() {
             <span aria-hidden="true">{typed}</span>
             <span className="paper__caret" aria-hidden="true"></span>
           </pre>
-          {/* <p className="paper__cut">Let's work together.</p> */}
+          <p className="paper__cut">Let's work together.</p>
         </div>
 
         <div ref={specsRef} className="stats rv" style={{ '--d': '0.15s' }}>
           {stats.map((r) => (
             <div className="stat" key={r.label}>
+              <span className="stat__icon">{r.icon}</span>
               <b className="stat__n"><Count to={r.n} run={specsSeen} suffix={r.suffix} /></b>
               <span className="stat__l">{r.label}</span>
             </div>

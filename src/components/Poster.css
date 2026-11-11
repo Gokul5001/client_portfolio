@@ -131,6 +131,32 @@
   to { opacity: 1; translate: 0 0; }
 }
 
+.poster__intro {
+  position: relative;
+  max-width: 540px;
+  margin-top: clamp(24px, 4vh, 44px);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.75;
+  white-space: pre-line;
+  color: var(--text);
+}
+
+/* invisible full copy reserves the space so the layout doesn't jump while typing */
+.poster__intro-ghost { visibility: hidden; }
+.poster__intro-live { position: absolute; inset: 0; }
+
+.poster__caret {
+  display: inline-block;
+  width: 7px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--gold);
+  animation: poster-caret 1s steps(1) infinite;
+}
+
+@keyframes poster-caret { 50% { opacity: 0; } }
+
 .poster__foot {
   display: flex;
   flex-wrap: wrap;
@@ -241,7 +267,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .poster__in, .poster__role, .poster__scroll i::after { animation: none; }
+  .poster__in, .poster__role, .poster__scroll i::after, .poster__caret { animation: none; }
 }
 
 /* Pointer-following lens flare */
