@@ -6,6 +6,7 @@ const chapters = [
   { id: 'poster', label: 'Poster' },
   { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' },
+  { id: 'certification', label: 'Certification' },
   { id: 'experience', label: 'Experience' },
   { id: 'work', label: 'Work' },
   { id: 'awards', label: 'Awards' },

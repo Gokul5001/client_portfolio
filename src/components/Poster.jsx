@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import './Poster.css'
 import { portrait } from '../data/images'
-import { prefersReducedMotion, useTyped } from '../hooks'
+import { useTyped } from '../hooks'
 
 const roles = ['Senior Graphic Designer', 'Digital Marketing Specialist', 'AI Video Editor & Filmmaker', 'Course Content Writer']
 
 const intro = roles.join('\n')
 
 function Poster() {
-  const [i, setI] = useState(0)
   const [typeGo, setTypeGo] = useState(false)
   const typed = useTyped(intro, typeGo, 32)
   const flare = useRef(null)
@@ -28,13 +27,6 @@ function Poster() {
   useEffect(() => {
     const t = setTimeout(() => setTypeGo(true), 1100)
     return () => clearTimeout(t)
-  }, [])
-
-  // The role line swaps role every few seconds.
-  useEffect(() => {
-    if (prefersReducedMotion()) return undefined
-    const t = setInterval(() => setI((v) => (v + 1) % roles.length), 2800)
-    return () => clearInterval(t)
   }, [])
 
   return (
@@ -62,10 +54,6 @@ function Poster() {
             <br />
             Bilal
           </h1>
-
-          <p className="poster__star poster__in" style={{ '--d': '0.35s' }}>
-            <b key={i} className="poster__role">{roles[i]}</b>
-          </p>
 
           <div className="poster__intro poster__in" style={{ '--d': '0.6s' }}>
             <p className="poster__intro-ghost" aria-hidden="true">{intro}</p>

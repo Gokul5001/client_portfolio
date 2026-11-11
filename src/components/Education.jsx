@@ -6,6 +6,9 @@ import { useInView, useScramble } from '../hooks'
 const items = [
   { roll: 2020, title: 'Bachelor study in English literature', school: 'City University of Science and IT, Peshawar', period: 'Sep 2020 to Jul 2024' },
   { roll: 2018, title: 'FSc (Faculty of Science)', school: 'Frontier College System, Peshawar', period: 'Apr 2018 to Jul 2020' },
+]
+
+const certItems = [
   {
     roll: 2017,
     title: 'Diploma and certifications',
@@ -19,7 +22,7 @@ const items = [
   },
 ]
 
-function Board({ item, scene }) {
+function Board({ item, scene, production }) {
   const ref = useRef(null)
   const seen = useInView(ref, '-18% 0px')
 
@@ -28,7 +31,7 @@ function Board({ item, scene }) {
       <div className="board__clap" aria-hidden="true"></div>
       <div className="board__body">
         <p className="board__k">Production</p>
-        <p className="board__v">Education</p>
+        <p className="board__v">{production}</p>
         <div className="board__nums">
           <div><span>Roll</span><b>{item.roll}</b></div>
           <div><span>Scene</span><b>{scene}</b></div>
@@ -126,29 +129,23 @@ function Thread({ listRef }) {
   )
 }
 
-function Education() {
+function Block({ id, items, word: heading, sub, icon, production }) {
   const listRef = useRef(null)
   const head = useRef(null)
   const seen = useInView(head)
-  const word = useScramble('EDUCATION', seen)
+  const word = useScramble(heading.toUpperCase(), seen)
 
   return (
-    <section id="education" className="edu">
+    <section id={id} className="edu">
       <div className="wrap">
         <div ref={head} className="edu__head">
           <div>
-            <h2 className="title edu__title" aria-label="Education">
+            <h2 className="title edu__title" aria-label={heading}>
               <span aria-hidden="true">{word}</span>
             </h2>
-            <p className="sub" style={{ marginTop: 14 }}>
-              Every take that led here, in order.
-            </p>
+            <p className="sub" style={{ marginTop: 14 }}>{sub}</p>
           </div>
-          <svg className="edu__cap" viewBox="0 0 120 90" width="96" height="72" aria-hidden="true">
-            <path d="M60 8L8 32l52 24 52-24z" fill="#d9b46a" />
-            <path d="M28 46v22c0 8 14 14 32 14s32-6 32-14V46L60 58z" fill="none" stroke="#d9b46a" strokeWidth="4" strokeLinejoin="round" />
-            <path d="M108 36v30" stroke="#d9b46a" strokeWidth="4" strokeLinecap="round" />
-          </svg>
+          {icon}
         </div>
 
         <ol ref={listRef} className="edu__list">
@@ -157,12 +154,53 @@ function Education() {
             <li className="edu__item" key={it.title}>
               <span className="edu__year" aria-hidden="true">{it.roll}</span>
               <span className="edu__dot" aria-hidden="true"></span>
-              <Board item={it} scene={items.length - i} />
+              <Board item={it} scene={items.length - i} production={production} />
             </li>
           ))}
         </ol>
       </div>
     </section>
+  )
+}
+
+const capIcon = (
+  <svg className="edu__cap" viewBox="0 0 120 90" width="96" height="72" aria-hidden="true">
+    <path d="M60 8L8 32l52 24 52-24z" fill="#d9b46a" />
+    <path d="M28 46v22c0 8 14 14 32 14s32-6 32-14V46L60 58z" fill="none" stroke="#d9b46a" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M108 36v30" stroke="#d9b46a" strokeWidth="4" strokeLinecap="round" />
+  </svg>
+)
+
+// certificate with a ribbon, drawn in the same gold line style as the cap
+const certIcon = (
+  <svg className="edu__cap" viewBox="0 0 120 90" width="96" height="72" aria-hidden="true">
+    <rect x="12" y="8" width="96" height="62" rx="4" fill="none" stroke="#d9b46a" strokeWidth="4" strokeLinejoin="round" />
+    <path d="M30 28h60M30 40h40" stroke="#d9b46a" strokeWidth="4" strokeLinecap="round" />
+    <circle cx="86" cy="54" r="9" fill="#d9b46a" />
+    <path d="M80 62l-4 20 10-6 10 6-4-20" fill="#d9b46a" />
+  </svg>
+)
+
+function Education() {
+  return (
+    <>
+      <Block
+        id="education"
+        items={items}
+        word="Education"
+        sub="Every take that led here, in order."
+        icon={capIcon}
+        production="Education"
+      />
+      <Block
+        id="certification"
+        items={certItems}
+        word="Certification and Graphics"
+        sub="The extra reels: diplomas, courses and craft."
+        icon={certIcon}
+        production="Certification and Graphics"
+      />
+    </>
   )
 }
 
