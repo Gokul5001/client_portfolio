@@ -111,10 +111,6 @@ function Contact() {
   )
 }
 
-const crew = [
-  ['Next feature', 'Yours'],
-]
-
 function Credits() {
   return (
     <section id="credits" className="credits">
@@ -124,22 +120,7 @@ function Credits() {
           <p className="credits__in">in</p>
           <p className="credits__film">A film about your next project</p>
         </header>
-
-        <dl className="credits__crew">
-          {crew.map(([role, name], i) => (
-            <div className={`credits__row rv in`} key={role} style={{ '--d': `${i * 0.05}s` }}>
-              <dt>{role}</dt>
-              <dd>{name}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className="credits__thanks">
-          <p>Filmed on location in Sahiwal, Punjab, Pakistan.</p>
-          <p>Thank you for watching.</p>
-        </div>
       </div>
-
     </section>
   )
 }
