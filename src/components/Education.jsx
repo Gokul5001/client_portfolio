@@ -195,7 +195,7 @@ function Education() {
         items={certItems}
         word="Certification"
         icon={certIcon}
-        production="Certification and Graphics"
+        production="Certification"
       />
     </>
   )

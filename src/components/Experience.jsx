@@ -54,7 +54,6 @@ function Experience() {
         <div className="wrap exp__inner">
           <header className="exp__head">
             <h2 className="title">Experience</h2>
-            <p className="sub">The career, cut on a timeline. Scrolling plays it; select a clip to jump there.</p>
           </header>
 
           <div className={`monitor lane-${current.lane}`}>
