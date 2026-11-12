@@ -129,7 +129,7 @@ function Thread({ listRef }) {
   )
 }
 
-function Block({ id, items, word: heading, sub, icon, production }) {
+function Block({ id, items, word: heading, icon, production }) {
   const listRef = useRef(null)
   const head = useRef(null)
   const seen = useInView(head)
@@ -143,7 +143,6 @@ function Block({ id, items, word: heading, sub, icon, production }) {
             <h2 className="title edu__title" aria-label={heading}>
               <span aria-hidden="true">{word}</span>
             </h2>
-            <p className="sub" style={{ marginTop: 14 }}>{sub}</p>
           </div>
           {icon}
         </div>
@@ -188,15 +187,13 @@ function Education() {
         id="education"
         items={items}
         word="Education"
-        sub="Every take that led here, in order."
-        icon={capIcon}
+                icon={capIcon}
         production="Education"
       />
       <Block
         id="certification"
         items={certItems}
-        word="Certification and Graphics"
-        sub="The extra reels: diplomas, courses and craft."
+        word="Certification"
         icon={certIcon}
         production="Certification and Graphics"
       />

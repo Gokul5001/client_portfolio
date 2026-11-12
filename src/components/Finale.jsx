@@ -38,6 +38,39 @@ function Awards() {
   )
 }
 
+const stroke = { fill: 'none', stroke: '#d9b46a', strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round' }
+
+const contactIcons = {
+  WhatsApp: (
+    <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+      <path d="M20 6a14 14 0 0 0-12 21l-2 7 7-2a14 14 0 1 0 7-26z" {...stroke} />
+      <path d="M15 15c0 5 5 10 10 10l2-3-4-2-2 1c-2-1-3-2-4-4l1-2-2-4z" fill="#d9b46a" stroke="none" />
+    </svg>
+  ),
+  Email: (
+    <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+      <rect x="5" y="9" width="30" height="22" rx="3" {...stroke} />
+      <path d="M6 12l14 11 14-11" {...stroke} />
+    </svg>
+  ),
+  Behance: (
+    <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+      <rect x="5" y="7" width="30" height="26" rx="3" {...stroke} />
+      <path d="M5 15h30" {...stroke} />
+      <circle cx="12" cy="11" r="1.4" fill="#d9b46a" stroke="none" />
+      <circle cx="17" cy="11" r="1.4" fill="#d9b46a" stroke="none" />
+      <path d="M12 26l5-6 4 4 3-3 4 5" {...stroke} />
+    </svg>
+  ),
+  LinkedIn: (
+    <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+      <rect x="5" y="5" width="30" height="30" rx="4" {...stroke} />
+      <path d="M13 17v10M13 12v1" {...stroke} />
+      <path d="M19 27V17M19 21c0-5 9-5 9 0v6" {...stroke} />
+    </svg>
+  ),
+}
+
 function Contact() {
   const rows = [
     { k: 'WhatsApp', v: '+966 59 763 0124', href: 'https://wa.me/966597630124' },
@@ -47,66 +80,38 @@ function Contact() {
   ]
   return (
     <section id="contact" className="contact">
-      <div className="wrap contact__grid">
-        <div className="contact__copy">
+      <div className="wrap">
+        <div className="contact__head">
           <h2 className="title">Let&rsquo;s roll.</h2>
-          <p className="contact__lead">
-            Tell Bilal what you&rsquo;re making and when it has to go out. Book the whole production, or just one department.
-          </p>
-          <svg className="contact__chair" viewBox="0 0 80 80" width="84" height="84" aria-hidden="true">
-            <rect x="12" y="6" width="56" height="18" fill="none" stroke="#d9b46a" strokeWidth="1.6" />
-            <rect x="14" y="8" width="52" height="14" fill="rgba(217,180,106,.35)" />
-            <text x="40" y="19" textAnchor="middle" fontFamily="Cinzel, serif" fontSize="9" fill="#d9b46a" letterSpacing="1">YOU</text>
-            <rect x="10" y="38" width="60" height="6" fill="none" stroke="#d9b46a" strokeWidth="1.6" />
-            <path d="M16 44L64 76M64 44L16 76" stroke="#d9b46a" strokeWidth="1.6" fill="none" />
-            <path d="M16 24v14M64 24v14" stroke="#d9b46a" strokeWidth="1.6" />
-          </svg>
+          <p className="contact__status"><i aria-hidden="true"></i>Open for freelance &middot; Jeddah, Saudi Arabia</p>
         </div>
 
-        <div className="ticket">
-          <div className="ticket__main">
-            <div className="ticket__top">
-              <p className="ticket__admit">Admit one</p>
-              <p className="ticket__no">No. 000001</p>
-            </div>
-            <div className="ticket__meta">
-              <div><span>Feature</span><b>Your project</b></div>
-              <div><span>Crew</span><b>Muhammad Bilal</b></div>
-              <div><span>Seat</span><b>Front row</b></div>
-            </div>
-            <ul className="ticket__rows">
-              {rows.map((r) => (
-                <li key={r.k}>
-                  <span className="ticket__k">{r.k}</span>
-                  {r.href ? (
-                    <a className="ticket__pill" href={r.href} target={r.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">{r.v}</a>
-                  ) : (
-                    <span className="ticket__pill">{r.v}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <p className="ticket__loc">Jeddah, Saudi Arabia</p>
-          </div>
-          <div className="ticket__stub" aria-hidden="true">
-            <span className="ticket__soon">Booking soon</span>
-            <span className="ticket__open">Open for freelance</span>
-          </div>
-        </div>
+        <ul className="contact__cards">
+          {rows.map((r) => {
+            const inner = (
+              <>
+                <span className="contact__icon">{contactIcons[r.k]}</span>
+                <span className="contact__k">{r.k}</span>
+                <span className="contact__v">{r.v}</span>
+              </>
+            )
+            return (
+              <li key={r.k}>
+                {r.href ? (
+                  <a className="contact__card" href={r.href} target={r.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">{inner}</a>
+                ) : (
+                  <div className="contact__card">{inner}</div>
+                )}
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )
 }
 
 const crew = [
-  ['Directed by', 'Muhammad Bilal'],
-  ['Poster and key art', 'Muhammad Bilal'],
-  ['Edited by', 'Muhammad Bilal'],
-  ['AI cinematography', 'Muhammad Bilal'],
-  ['Written by', 'Muhammad Bilal'],
-  ['Marketing and release', 'Muhammad Bilal'],
-  ['Colour', 'Muhammad Bilal'],
-  ['Catering', 'Chai, mostly'],
   ['Next feature', 'Yours'],
 ]
 
@@ -122,7 +127,7 @@ function Credits() {
 
         <dl className="credits__crew">
           {crew.map(([role, name], i) => (
-            <div className={`credits__row rv in${i >= crew.length - 2 ? ' is-dim' : ''}`} key={role} style={{ '--d': `${i * 0.05}s` }}>
+            <div className={`credits__row rv in`} key={role} style={{ '--d': `${i * 0.05}s` }}>
               <dt>{role}</dt>
               <dd>{name}</dd>
             </div>
@@ -135,22 +140,6 @@ function Credits() {
         </div>
       </div>
 
-      <div className="credits__end">
-        <svg viewBox="0 0 120 56" width="112" height="52" aria-hidden="true">
-          <circle cx="28" cy="28" r="22" fill="none" stroke="#d9b46a" strokeWidth="2" />
-          <circle cx="28" cy="28" r="4.5" fill="#d9b46a" />
-          {[0, 72, 144, 216, 288].map((deg) => (
-            <circle key={deg} cx="28" cy="15" r="4.5" fill="#d9b46a" transform={`rotate(${deg} 28 28)`} />
-          ))}
-          <rect x="44" y="30" width="72" height="14" fill="#2a2214" stroke="#d9b46a" strokeWidth="2" />
-          {[52, 62, 72, 82, 92, 102].map((x) => (
-            <rect key={x} x={x} y="34" width="5" height="6" fill="#d9b46a" />
-          ))}
-        </svg>
-        <h2 className="credits__fin">Fin.</h2>
-        <p className="credits__line">A Muhammad Bilal picture. Made in Sahiwal, Punjab, Pakistan.</p>
-        <a href="#poster" className="credits__again">Watch it again</a>
-      </div>
     </section>
   )
 }
